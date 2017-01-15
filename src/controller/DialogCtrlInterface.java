@@ -1,9 +1,10 @@
 package controller;
 
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public interface DialogCtrlInterface <T>{
+public interface DialogCtrlInterface <T, V extends Component> extends ViewController<V> {
     void showDialog();
 
     void changeMessageQuantity(T numberOfMessage);

@@ -1,7 +1,9 @@
 package views;
 
 
-public interface SimpleView <T> {
-    T render();
+import java.awt.*;
+
+public interface SimpleView<T extends Component>  {
+    T drawView();
     void setVisible(boolean isVisible);
 }

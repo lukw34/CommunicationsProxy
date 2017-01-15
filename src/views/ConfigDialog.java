@@ -22,7 +22,7 @@ public class ConfigDialog extends JDialog implements SimpleView<ConfigDialog> {
     }
 
     @Override
-    public ConfigDialog render() {
+    public ConfigDialog drawView() {
         initElements();
 
         /**
@@ -40,6 +40,7 @@ public class ConfigDialog extends JDialog implements SimpleView<ConfigDialog> {
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setSize(300, 150);
         setLocationRelativeTo(null);
+
         return this;
     }
 
