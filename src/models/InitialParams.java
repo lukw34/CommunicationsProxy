@@ -1,6 +1,6 @@
 package models;
 
-public class InitialParams {
+public class InitialParams implements InitParamsInterface {
     private int numberOfThreaads;
     private int messageQuantity;
 
@@ -9,16 +9,23 @@ public class InitialParams {
         this.messageQuantity = 0;
     }
 
+    @Override
     public int getMessageQuantity() {
         return messageQuantity;
     }
 
+    @Override
     public int getNumberOfThreaads() {
         return numberOfThreaads;
     }
 
-    public void setConfiguration(int numberOfThreaads,int messageQuantity) {
+    @Override
+    public void setNumberOfThreaads(int numberOfThreaads) {
         this.numberOfThreaads = numberOfThreaads;
+    }
+
+    @Override
+    public void setMessageQuantity(int messageQuantity) {
         this.messageQuantity = messageQuantity;
     }
 }
