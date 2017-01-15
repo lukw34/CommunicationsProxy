@@ -12,8 +12,9 @@ public class Base extends JPanel {
     }
 
 
-    public void render() {
-
+    public Base render() {
+        dialog.showDialog();
+        return this;
     }
 
 

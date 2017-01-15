@@ -1,18 +1,24 @@
 package elements;
 
+import models.InitialParams;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class ConfigDialog extends JDialog {
     private final static String TITLE = "Confguration of simulator.";
-    private final String ESCAPE  = "ESCAPE";
+
 
     private JSpinner startNumberOfCommunicats;
     private JSpinner numberOFThreads;
     private JButton submitButton;
 
+    private InitialParams initialParams;
+
     public ConfigDialog(JFrame base) {
         super(base, TITLE);
+        initialParams = new InitialParams();
+
         Point point = new Point(400, 400);
         setLocation(point.x, point.y);
         initeElements();
@@ -32,12 +38,13 @@ public class ConfigDialog extends JDialog {
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setSize(300, 150);
         setLocationRelativeTo(null);
-        showDialog();
     }
 
     private JPanel createSubmitPanel() {
         JPanel submitPanel = new JPanel();
         submitButton.addActionListener(event -> {
+            initialParams.setConfiguration((Integer)startNumberOfCommunicats.getValue(),
+                    (Integer)numberOFThreads.getValue());
             closeDialog();
             dispose();
         });
@@ -46,8 +53,8 @@ public class ConfigDialog extends JDialog {
     }
 
     private void initeElements() {
-        startNumberOfCommunicats = new JSpinner();
-        numberOFThreads = new JSpinner();
+        startNumberOfCommunicats = new JSpinner(new SpinnerNumberModel(0, 0, 30, 1));
+        numberOFThreads = new JSpinner(new SpinnerNumberModel(1, 1, 30, 1));
         submitButton = new JButton("submit");
     }
 
