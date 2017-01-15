@@ -1,5 +1,7 @@
 package views;
 
+import controller.HeaderCtrl;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -13,6 +15,12 @@ public class Header extends JPanel implements SimpleView<Header> {
     private JButton reset;
     private JLabel title;
     private Border border;
+
+    private HeaderCtrl headerCtrl;
+
+    public Header(HeaderCtrl ctrl) {
+        this.headerCtrl = ctrl;
+    }
 
     @Override
     public Header drawView() {
@@ -29,7 +37,7 @@ public class Header extends JPanel implements SimpleView<Header> {
         loadReset.run();
         Border raisedbevel = BorderFactory.createRaisedBevelBorder();
         Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-       this.border = BorderFactory.createCompoundBorder(raisedbevel, loweredbevel);
+        this.border = BorderFactory.createCompoundBorder(raisedbevel, loweredbevel);
         title = new JLabel("Symulator pośrednika wiadomości.");
         title.setFont(new Font("Sans Serif", Font.BOLD, 20));
         title.setHorizontalAlignment(SwingConstants.CENTER);
@@ -48,6 +56,7 @@ public class Header extends JPanel implements SimpleView<Header> {
             try {
                 ImageIcon resetIcon = new ImageIcon(get());
                 reset = new JButton("Kliknij, aby ustawić nową konfigurację.", resetIcon);
+                reset.addActionListener(headerCtrl::resetParams);
                 add(reset, BorderLayout.CENTER);
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();

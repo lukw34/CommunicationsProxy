@@ -41,6 +41,7 @@ public class Base extends JFrame {
 
     public void render() {
         initElements();
+        dialogCtrl.render();
         add(footer, BorderLayout.PAGE_END);
         add(headerCtrl.render(), BorderLayout.PAGE_START);
         setVisible(true);
