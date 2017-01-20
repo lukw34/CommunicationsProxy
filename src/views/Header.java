@@ -27,6 +27,8 @@ public class Header extends JPanel implements SimpleView<Header> {
         setLayout(new BorderLayout());
         initElements();
 
+//        setPreferredSize(new Dimension(AppConfig.headerWidth, AppConfig.headerHeight));
+
         add(title, BorderLayout.NORTH);
         setBorder(border);
         return this;
@@ -64,8 +66,7 @@ public class Header extends JPanel implements SimpleView<Header> {
         }
     };
 
-    @Override
-    public void setVisible(boolean isVisible) {
 
-    }
+    @Override
+    public void setVisible(boolean isVisible) {}
 }

@@ -3,7 +3,10 @@ package views;
 
 import java.awt.*;
 
-public interface SimpleView<T extends Component>  {
+public interface SimpleView<T extends Component> {
     T drawView();
-    void setVisible(boolean isVisible);
+
+    void setVisible(boolean visible);
+
+    void repaint();
 }

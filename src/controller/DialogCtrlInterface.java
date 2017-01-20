@@ -12,4 +12,6 @@ public interface DialogCtrlInterface <T, V extends Component> extends ViewContro
     void changeNumberOfThreads(T numberOfThreads);
 
     void closeDialog(ActionEvent actionEvent);
+
+    void addSubscriber(ViewController viewController);
 }

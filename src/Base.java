@@ -1,7 +1,5 @@
-import controller.AppHeaderCtrl;
-import controller.ConfigDialogCtrl;
-import controller.DialogCtrlInterface;
-import controller.HeaderCtrl;
+import config.AppConfig;
+import controller.*;
 import models.InitParamsInterface;
 import models.InitialParams;
 
@@ -16,6 +14,9 @@ public class Base extends JFrame {
      */
     DialogCtrlInterface dialogCtrl;
     HeaderCtrl headerCtrl;
+    ViewController mainCtrl;
+    AgentCtrlInterface agentCtrl;
+
     /**
      * Models
      */
@@ -25,7 +26,9 @@ public class Base extends JFrame {
         super("Message");
         config();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 500);
+        Dimension size = new Dimension(AppConfig.jFrameWidth, AppConfig.jFrameHeight);
+        setSize(size);
+        setResizable(false);
         setLocationRelativeTo(null);
     }
 
@@ -37,6 +40,8 @@ public class Base extends JFrame {
         //Header
         headerCtrl = new AppHeaderCtrl(dialogCtrl);
 
+        //Main
+        mainCtrl = new MainCtrl(initParams);
     }
 
     public void render() {
@@ -44,7 +49,10 @@ public class Base extends JFrame {
         dialogCtrl.render();
         add(footer, BorderLayout.PAGE_END);
         add(headerCtrl.render(), BorderLayout.PAGE_START);
+        add(mainCtrl.render(), BorderLayout.CENTER);
         setVisible(true);
+        dialogCtrl.addSubscriber(mainCtrl);
+        dialogCtrl.showDialog();
     }
 
     private void initElements() {

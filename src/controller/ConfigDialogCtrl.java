@@ -6,17 +6,19 @@ import views.SimpleView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 public class ConfigDialogCtrl implements DialogCtrlInterface<Integer, ConfigDialog> {
 
-    SimpleView configDialogSimpleView;
+    SimpleView<ConfigDialog> configDialogSimpleView;
     InitParamsInterface initParams;
 
+    ArrayList<ViewController> subscribers;
 
     public ConfigDialogCtrl(InitParamsInterface initParams, JFrame parent) {
         this.initParams = initParams;
         this.configDialogSimpleView = new ConfigDialog(parent, this);
-
+        subscribers = new ArrayList<>();
     }
 
     @Override
@@ -36,11 +38,22 @@ public class ConfigDialogCtrl implements DialogCtrlInterface<Integer, ConfigDial
 
     @Override
     public void closeDialog(ActionEvent event) {
+        subscribers.stream().forEach(ViewController::reRender);
         configDialogSimpleView.setVisible(false);
     }
 
     @Override
+    public void addSubscriber(ViewController viewController) {
+        subscribers.add(viewController);
+    }
+
+    @Override
     public ConfigDialog render() {
-        return (ConfigDialog) configDialogSimpleView.drawView();
+        return configDialogSimpleView.drawView();
+    }
+
+    @Override
+    public void reRender() {
+
     }
 }

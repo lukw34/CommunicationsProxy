@@ -24,7 +24,6 @@ public class ConfigDialog extends JDialog implements SimpleView<ConfigDialog> {
     @Override
     public ConfigDialog drawView() {
         initElements();
-
         /**
          *  Add form panel to JDialog
          */

@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 public class AppHeaderCtrl implements HeaderCtrl<Header>{
 
-    SimpleView header;
+    SimpleView<Header> header;
     DialogCtrlInterface dialogCtrl;
 
     public AppHeaderCtrl( DialogCtrlInterface dialogCtrl) {
@@ -22,6 +22,11 @@ public class AppHeaderCtrl implements HeaderCtrl<Header>{
 
     @Override
     public Header render() {
-        return (Header) header.drawView();
+        return header.drawView();
+    }
+
+    @Override
+    public void reRender() {
+        header.repaint();
     }
 }
