@@ -1,13 +1,16 @@
-package controller;
+package controller.implementations;
 
+import controller.interfaces.AgentCtrlInterface;
+import controller.interfaces.MessageBoxesCtrlInterface;
 import models.InitParamsInterface;
 import views.Main;
 import views.SimpleView;
 
-public class MainCtrl implements ViewController<Main> {
+public class MainCtrl extends BaseCtrl<Main> {
     InitParamsInterface initParams;
 
     SimpleView<Main> mainView;
+    Thread messageBoxes;
 
     //Controllers
     AgentCtrlInterface agentCtrl;
@@ -15,9 +18,11 @@ public class MainCtrl implements ViewController<Main> {
 
     public MainCtrl(InitParamsInterface initParams) {
         this.initParams = initParams;
-        this.agentCtrl = new AgentCtrl();
+        this.agentCtrl = new AgentCtrl(initParams);
         this.messageBoxesCtrl = new MessageBoxesCtrl(initParams);
         this.mainView = new Main(this.agentCtrl, this.messageBoxesCtrl);
+        messageBoxes = new Thread((Runnable) agentCtrl);
+        messageBoxes.start();
     }
 
     @Override
@@ -26,10 +31,10 @@ public class MainCtrl implements ViewController<Main> {
     }
 
     @Override
-    public void reRender() {
-        mainView.repaint();
-        agentCtrl.reRender();
-        messageBoxesCtrl.reRender();
+    public void onParamsChange() {
+        messageBoxesCtrl.onParamsChange();
+        agentCtrl.onParamsChange();
+        agentCtrl.unlock();
     }
 }
 

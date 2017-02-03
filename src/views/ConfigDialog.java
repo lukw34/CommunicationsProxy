@@ -1,6 +1,7 @@
 package views;
 
-import controller.DialogCtrlInterface;
+import utils.AppConfig;
+import controller.interfaces.DialogCtrlInterface;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -44,8 +45,8 @@ public class ConfigDialog extends JDialog implements SimpleView<ConfigDialog> {
     }
 
     private void initElements() {
-        messageQuantity = new JSpinner(new SpinnerNumberModel(0, 0, 30, 1));
-        numberOFThreads = new JSpinner(new SpinnerNumberModel(1, 1, 30, 1));
+        messageQuantity = new JSpinner(new SpinnerNumberModel(1, 1, 30, 1));
+        numberOFThreads = new JSpinner(new SpinnerNumberModel(1, 1, AppConfig.MAX_NUMBER_OF_THREADS, 1));
         submitButton = new JButton("submit");
     }
 

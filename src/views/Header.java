@@ -1,6 +1,6 @@
 package views;
 
-import controller.HeaderCtrl;
+import controller.interfaces.HeaderCtrlInterface;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,9 +16,9 @@ public class Header extends JPanel implements SimpleView<Header> {
     private JLabel title;
     private Border border;
 
-    private HeaderCtrl headerCtrl;
+    private HeaderCtrlInterface headerCtrl;
 
-    public Header(HeaderCtrl ctrl) {
+    public Header(HeaderCtrlInterface ctrl) {
         this.headerCtrl = ctrl;
     }
 
@@ -27,7 +27,7 @@ public class Header extends JPanel implements SimpleView<Header> {
         setLayout(new BorderLayout());
         initElements();
 
-//        setPreferredSize(new Dimension(AppConfig.headerWidth, AppConfig.headerHeight));
+//        setPreferredSize(new Dimension(AppConfig.HEADER_WIDTH, AppConfig.HEADER_HEIGHT));
 
         add(title, BorderLayout.NORTH);
         setBorder(border);

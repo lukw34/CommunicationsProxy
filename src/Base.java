@@ -1,5 +1,11 @@
-import config.AppConfig;
-import controller.*;
+import controller.implementations.AppHeaderCtrl;
+import controller.implementations.BaseCtrl;
+import controller.implementations.ConfigDialogCtrl;
+import controller.implementations.MainCtrl;
+import controller.interfaces.AgentCtrlInterface;
+import controller.interfaces.DialogCtrlInterface;
+import controller.interfaces.HeaderCtrlInterface;
+import utils.AppConfig;
 import models.InitParamsInterface;
 import models.InitialParams;
 
@@ -13,8 +19,8 @@ public class Base extends JFrame {
      * Controllers
      */
     DialogCtrlInterface dialogCtrl;
-    HeaderCtrl headerCtrl;
-    ViewController mainCtrl;
+    HeaderCtrlInterface headerCtrl;
+    BaseCtrl mainCtrl;
     AgentCtrlInterface agentCtrl;
 
     /**
@@ -23,10 +29,10 @@ public class Base extends JFrame {
     InitParamsInterface initParams;
 
     public Base() {
-        super("Message");
+        super("MessageWaiting");
         config();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Dimension size = new Dimension(AppConfig.jFrameWidth, AppConfig.jFrameHeight);
+        Dimension size = new Dimension(AppConfig.J_FRAME_WIDTH, AppConfig.J_FRAME_HEIGHT);
         setSize(size);
         setResizable(false);
         setLocationRelativeTo(null);

@@ -1,12 +1,12 @@
 package views;
 
-import components.EmptyBox;
-import components.ReadyBox;
-import controller.MessageBoxesCtrlInterface;
+import controller.interfaces.BoxCtrlInterface;
+import controller.interfaces.MessageBoxesCtrlInterface;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class MessageBoxes extends JPanel implements SimpleView<MessageBoxes> {
     private Border border;
@@ -14,35 +14,23 @@ public class MessageBoxes extends JPanel implements SimpleView<MessageBoxes> {
     private int messageBoxesQuantiy = 24;
     private MessageBoxesCtrlInterface messageBoxesCtrl;
 
-    public MessageBoxes(MessageBoxesCtrlInterface mainCtrl) {
-        this.messageBoxesCtrl = mainCtrl;
+    private ArrayList<BoxCtrlInterface> boxCtrls;
+
+    public MessageBoxes(MessageBoxesCtrlInterface messageBoxesCtrl) {
+        this.boxCtrls = new ArrayList<>();
+        this.messageBoxesCtrl = messageBoxesCtrl;
     }
 
 
-
     /**
-     *
      * @return
      */
     @Override
     public MessageBoxes drawView() {
-        initElements();
         setLayout(new GridLayout(8, 3));
-        for (int messageBoxIndex = 0; messageBoxIndex < messageBoxesQuantiy; messageBoxIndex++) {
-            if (messageBoxIndex < messageBoxesCtrl.getActivemessageBoxes()) {
-                add(new ReadyBox(new Point(0, 0)));
-            } else {
-                add(new EmptyBox(new Point(0, 0)));
-            }
-        }
+        messageBoxesCtrl.getMessageBoxes().forEach(box -> this.add((JPanel)box));
         setBorder(this.border);
+        setVisible(true);
         return this;
-    }
-
-    private void initElements() {}
-
-    @Override
-    public void repaint() {
-        super.repaint();
     }
 }

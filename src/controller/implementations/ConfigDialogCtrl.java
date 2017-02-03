@@ -1,5 +1,7 @@
-package controller;
+package controller.implementations;
 
+import controller.interfaces.DialogCtrlInterface;
+import controller.interfaces.DialogSubscriber;
 import models.InitParamsInterface;
 import views.ConfigDialog;
 import views.SimpleView;
@@ -13,7 +15,7 @@ public class ConfigDialogCtrl implements DialogCtrlInterface<Integer, ConfigDial
     SimpleView<ConfigDialog> configDialogSimpleView;
     InitParamsInterface initParams;
 
-    ArrayList<ViewController> subscribers;
+    ArrayList<DialogSubscriber> subscribers;
 
     public ConfigDialogCtrl(InitParamsInterface initParams, JFrame parent) {
         this.initParams = initParams;
@@ -38,22 +40,17 @@ public class ConfigDialogCtrl implements DialogCtrlInterface<Integer, ConfigDial
 
     @Override
     public void closeDialog(ActionEvent event) {
-        subscribers.stream().forEach(ViewController::reRender);
+        subscribers.forEach(DialogSubscriber::onParamsChange);
         configDialogSimpleView.setVisible(false);
     }
 
     @Override
-    public void addSubscriber(ViewController viewController) {
+    public void addSubscriber(DialogSubscriber viewController) {
         subscribers.add(viewController);
     }
 
     @Override
     public ConfigDialog render() {
         return configDialogSimpleView.drawView();
-    }
-
-    @Override
-    public void reRender() {
-
     }
 }

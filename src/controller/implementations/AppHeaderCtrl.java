@@ -1,11 +1,13 @@
-package controller;
+package controller.implementations;
 
+import controller.interfaces.DialogCtrlInterface;
+import controller.interfaces.HeaderCtrlInterface;
 import views.Header;
 import views.SimpleView;
 
 import java.awt.event.ActionEvent;
 
-public class AppHeaderCtrl implements HeaderCtrl<Header>{
+public class AppHeaderCtrl implements HeaderCtrlInterface<Header> {
 
     SimpleView<Header> header;
     DialogCtrlInterface dialogCtrl;
@@ -25,8 +27,4 @@ public class AppHeaderCtrl implements HeaderCtrl<Header>{
         return header.drawView();
     }
 
-    @Override
-    public void reRender() {
-        header.repaint();
-    }
 }

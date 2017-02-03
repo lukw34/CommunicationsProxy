@@ -1,10 +1,10 @@
-package controller;
+package controller.interfaces;
 
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public interface DialogCtrlInterface <T, V extends Component> extends ViewController<V> {
+public interface DialogCtrlInterface<T, V extends Component> extends ViewController<V> {
     void showDialog();
 
     void changeMessageQuantity(T numberOfMessage);
@@ -13,5 +13,5 @@ public interface DialogCtrlInterface <T, V extends Component> extends ViewContro
 
     void closeDialog(ActionEvent actionEvent);
 
-    void addSubscriber(ViewController viewController);
+    void addSubscriber(DialogSubscriber viewController);
 }
