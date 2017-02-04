@@ -5,33 +5,54 @@ import controller.implementations.message.MessageProcessing;
 import controller.implementations.message.MessageWaiting;
 import controller.interfaces.MessageCtrlInterface;
 import controller.interfaces.MessageState;
-import views.Message;
+import models.Message;
+import views.MessageView;
 import views.SimpleView;
 
 import java.awt.*;
+import java.util.concurrent.Semaphore;
 
-public class MessageCtrl implements MessageCtrlInterface<Message> {
+public class MessageCtrl implements MessageCtrlInterface<MessageView> {
+    private Semaphore semaphore;
 
-    MessageState message;
-    MessageState empty;
-    MessageState processing;
+    private MessageState waiting;
+    private MessageState empty;
+    private MessageState processing;
 
-    MessageState actualState;
+    private MessageState actualState;
 
-    SimpleView<Message> messageView;
+    private SimpleView<MessageView> messageView;
+    private Message message;
 
     MessageCtrl() {
-        messageView = new Message(this);
-        empty = new MessageEmpty();
-        message = new MessageWaiting(this);
-        processing = new MessageProcessing();
-        actualState  = empty;
+        this.messageView = new MessageView(this);
+        this.empty = new MessageEmpty();
+        this.waiting = new MessageWaiting();
+        this.processing = new MessageProcessing();
+        this.semaphore = new Semaphore(1);
+
+        this.actualState = this.empty;
+    }
+
+    /**
+     * Metoda ustawiajaca nowy stan;
+     *
+     * @param state Nowy stan
+     */
+    @Override
+    public void setState(MessageState state) {
+        this.actualState = state;
+        this.repaint();
     }
 
     @Override
-    public void setState(MessageState state) {
-        actualState = state;
+    public void setMessage(Message message) {
+        this.message = message;
+    }
 
+    @Override
+    public Message getMessage() {
+        return message;
     }
 
     @Override
@@ -49,31 +70,46 @@ public class MessageCtrl implements MessageCtrlInterface<Message> {
         return empty;
     }
 
+    /**
+     * Zwraca stan odpowiadjący oczekujacej wiadomości.
+     *
+     * @return Stan odpowiadjący oczekujacej wiadomości.
+     */
     @Override
-    public MessageState getMessage() {
-        return message;
+    public MessageState getWaiting() {
+        return waiting;
     }
 
+    /**
+     * Metoda wysylajaca wiadomosc kiedy to mozliwe. Odpowiada rowniez za odpowiednia manipulacje stanem.
+     *
+     * @throws InterruptedException
+     */
     @Override
     public void sendIfPossible() throws InterruptedException {
-        if(actualState.canProcessing()) {
-            Thread.sleep(2000);
-            this.setState(this.message);
-            this.repaint();
-
+        if (actualState.canProcessing() && semaphore.tryAcquire()) {
+            this.setState(this.processing);
+            Thread.sleep(750);
             new Thread(() -> {
-               int randdom = (int)( Math.random() * 2);
-                System.out.println(randdom);
-                if(randdom == 1) {
+                boolean isSucces = message.getRecipient().onReciveMessage(this) ;
+                if (isSucces) {
                     this.setState(this.empty);
-                    this.repaint();
+                } else {
+                    this.setState(this.waiting);
                 }
+
+                semaphore.release();
             }).start();
         }
     }
 
+    /**
+     * Zwraca widok wiadomości, ktory jest gotowy do wyswietlenia.
+     *
+     * @return Widok wiadomosci.
+     */
     @Override
-    public Message render() {
+    public MessageView render() {
         return messageView.drawView();
     }
 

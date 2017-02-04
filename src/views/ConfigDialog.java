@@ -26,13 +26,13 @@ public class ConfigDialog extends JDialog implements SimpleView<ConfigDialog> {
     public ConfigDialog drawView() {
         initElements();
         /**
-         *  Add form panel to JDialog
+         *  Dodanie formularza do okna dialogowego
          */
         JPanel formPanel = createFormPanel();
         getContentPane().add(formPanel);
 
         /**
-         * Add button panel to JDialog
+         * Dodanie przycisku submit do okna dialogowego
          */
         JPanel submitPanel = createSubmitPanel();
         getContentPane().add(submitPanel, BorderLayout.PAGE_END);
@@ -45,7 +45,7 @@ public class ConfigDialog extends JDialog implements SimpleView<ConfigDialog> {
     }
 
     private void initElements() {
-        messageQuantity = new JSpinner(new SpinnerNumberModel(1, 1, 30, 1));
+        messageQuantity = new JSpinner(new SpinnerNumberModel(1, 1, AppConfig.MAX_NUMBER_OF_MESSAGES, 1));
         numberOFThreads = new JSpinner(new SpinnerNumberModel(1, 1, AppConfig.MAX_NUMBER_OF_THREADS, 1));
         submitButton = new JButton("submit");
     }

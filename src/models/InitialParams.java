@@ -5,8 +5,8 @@ public class InitialParams implements InitParamsInterface {
     private int messageQuantity;
 
     public InitialParams() {
-        this.numberOfThreaads = 0;
-        this.messageQuantity = 0;
+        this.numberOfThreaads = 1;
+        this.messageQuantity = 1;
     }
 
     @Override

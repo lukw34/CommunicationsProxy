@@ -5,23 +5,21 @@ import controller.interfaces.HeaderCtrlInterface;
 import views.Header;
 import views.SimpleView;
 
-import java.awt.event.ActionEvent;
-
 public class AppHeaderCtrl implements HeaderCtrlInterface<Header> {
 
     SimpleView<Header> header;
     DialogCtrlInterface dialogCtrl;
 
     public AppHeaderCtrl( DialogCtrlInterface dialogCtrl) {
-        this.header = new Header(this);
+        this.header = new Header();
         this.dialogCtrl = dialogCtrl;
     }
 
-    @Override
-    public void resetParams(ActionEvent event) {
-        dialogCtrl.showDialog();
-    }
-
+    /**
+     * Metoda udostepnijaca widok.
+     *
+     * @return Wyrenderowany widok
+     */
     @Override
     public Header render() {
         return header.drawView();

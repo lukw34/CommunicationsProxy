@@ -40,15 +40,26 @@ public class ConfigDialogCtrl implements DialogCtrlInterface<Integer, ConfigDial
 
     @Override
     public void closeDialog(ActionEvent event) {
-        subscribers.forEach(DialogSubscriber::onParamsChange);
+        subscribers.forEach(DialogSubscriber::onSubmit);
         configDialogSimpleView.setVisible(false);
     }
 
+
+    /**
+     * Dodaje kontrollery, które zosta poinformowane, gdy okno dialogowe zostanie zamkniete.
+     *
+     * @param viewController Kontroler korzystajacy z danych podawanych w oknie dialogowym
+     */
     @Override
     public void addSubscriber(DialogSubscriber viewController) {
         subscribers.add(viewController);
     }
 
+    /**
+     * Metoda udostepnijaca widok.
+     *
+     * @return Wyrenderowany widok
+     */
     @Override
     public ConfigDialog render() {
         return configDialogSimpleView.drawView();

@@ -1,17 +1,10 @@
 package controller.implementations.message;
 
-import controller.interfaces.MessageCtrlInterface;
 import controller.interfaces.MessageState;
 
 import java.awt.*;
 
 public class MessageWaiting implements MessageState {
-
-    private MessageCtrlInterface messageCtrl;
-
-    public MessageWaiting(MessageCtrlInterface messageCtrl) {
-        this.messageCtrl = messageCtrl;
-    }
 
     @Override
     public void paint(Graphics g, Point startPoint) {
@@ -34,8 +27,6 @@ public class MessageWaiting implements MessageState {
 
     @Override
     public boolean canProcessing() {
-        messageCtrl.setState(messageCtrl.getProcessing());
-        messageCtrl.repaint();
         return true;
     }
 }

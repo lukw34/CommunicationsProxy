@@ -13,7 +13,6 @@ public class MessageEmpty  implements MessageState {
 
     @Override
     public boolean canProcessing() {
-        System.out.println("Pusta wiadomość");
         return false;
     }
 

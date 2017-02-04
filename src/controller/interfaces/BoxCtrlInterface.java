@@ -13,6 +13,8 @@ public interface BoxCtrlInterface<T extends Component> extends ViewController<T>
 
     void repaint();
 
+    boolean onReciveMessage(MessageCtrlInterface message);
+
     BoxState getEmpty();
 
     BoxState getReady();

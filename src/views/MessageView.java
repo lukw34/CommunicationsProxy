@@ -5,11 +5,11 @@ import controller.interfaces.MessageCtrlInterface;
 import javax.swing.*;
 import java.awt.*;
 
-public class Message extends JPanel implements  SimpleView<Message> {
+public class MessageView extends JPanel implements  SimpleView<MessageView> {
 
     MessageCtrlInterface messageCtrl;
 
-    public Message(MessageCtrlInterface messageCtrl) {
+    public MessageView(MessageCtrlInterface messageCtrl) {
         this.messageCtrl = messageCtrl;
     }
 
@@ -19,7 +19,7 @@ public class Message extends JPanel implements  SimpleView<Message> {
     }
 
     @Override
-    public Message drawView() {
+    public MessageView drawView() {
         return this;
     }
 }

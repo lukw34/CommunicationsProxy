@@ -6,7 +6,12 @@ import utils.AppConfig;
 import java.awt.*;
 
 public class BoxReadyState implements BoxState {
-
+    /**
+     * Metoda rysujaca widok prezentujacy mozliwosc odebrania wiadmosci.
+     *
+     * @param g Grafika.
+     * @param startPoint Punkt poczatkowy.
+     */
     @Override
     public void paint(Graphics g, Point startPoint) {
         int width = AppConfig.MESSAGE_BOX_WIDTH;
@@ -20,5 +25,15 @@ public class BoxReadyState implements BoxState {
         g.setColor(Color.black);
         g.setFont(new Font("TimesRoman", Font.BOLD, 14));
         g.drawString("READY!", 10, 25);
+    }
+
+    /**
+     * Informacja o gotowowosci adresata.
+     *
+     * @return true, poniewaz adresat moze otrzymac wiadomosc.
+     */
+    @Override
+    public boolean isReady() {
+        return true;
     }
 }

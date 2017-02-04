@@ -1,7 +1,5 @@
 package views;
 
-import controller.interfaces.HeaderCtrlInterface;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -16,18 +14,10 @@ public class Header extends JPanel implements SimpleView<Header> {
     private JLabel title;
     private Border border;
 
-    private HeaderCtrlInterface headerCtrl;
-
-    public Header(HeaderCtrlInterface ctrl) {
-        this.headerCtrl = ctrl;
-    }
-
     @Override
     public Header drawView() {
         setLayout(new BorderLayout());
         initElements();
-
-//        setPreferredSize(new Dimension(AppConfig.HEADER_WIDTH, AppConfig.HEADER_HEIGHT));
 
         add(title, BorderLayout.NORTH);
         setBorder(border);
@@ -58,7 +48,6 @@ public class Header extends JPanel implements SimpleView<Header> {
             try {
                 ImageIcon resetIcon = new ImageIcon(get());
                 reset = new JButton("Kliknij, aby ustawić nową konfigurację.", resetIcon);
-                reset.addActionListener(headerCtrl::resetParams);
                 add(reset, BorderLayout.CENTER);
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();

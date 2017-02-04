@@ -5,6 +5,7 @@ import controller.implementations.MainCtrl;
 import controller.interfaces.AgentCtrlInterface;
 import controller.interfaces.DialogCtrlInterface;
 import controller.interfaces.HeaderCtrlInterface;
+import models.Message;
 import utils.AppConfig;
 import models.InitParamsInterface;
 import models.InitialParams;
@@ -21,7 +22,6 @@ public class Base extends JFrame {
     DialogCtrlInterface dialogCtrl;
     HeaderCtrlInterface headerCtrl;
     BaseCtrl mainCtrl;
-    AgentCtrlInterface agentCtrl;
 
     /**
      * Models

@@ -17,4 +17,14 @@ public class BoxEmptyState implements BoxState {
         int height = AppConfig.MESSAGE_BOX_HEIGHT;
         g.clearRect(startPoint.x, startPoint.y, width, height);
     }
+
+    /**
+     * Informacja o gotowowosci adresata.
+     *
+     * @return true, poniewaz adresat nie istnieje.
+     */
+    @Override
+    public boolean isReady() {
+        return true;
+    }
 }

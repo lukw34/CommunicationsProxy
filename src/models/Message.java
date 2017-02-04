@@ -1,10 +1,14 @@
 package models;
 
 
+import controller.interfaces.BoxCtrlInterface;
+
 public interface Message {
-    MessageBox getRecipient();
+    BoxCtrlInterface getRecipient();
 
-    void setRecipiant(MessageBox recipiant);
+    void setRecipiant(BoxCtrlInterface recipiant);
 
+    void decorateMessage(int magicNumber);
 
+    String getContent();
 }

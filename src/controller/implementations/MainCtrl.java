@@ -6,32 +6,50 @@ import models.InitParamsInterface;
 import views.Main;
 import views.SimpleView;
 
+
+/**
+ * Klasa reprezentujaca glowny kontroller aplikacji
+ */
 public class MainCtrl extends BaseCtrl<Main> {
+    //Dane
     InitParamsInterface initParams;
 
+    //Podpięty widok
     SimpleView<Main> mainView;
-    Thread messageBoxes;
 
-    //Controllers
+    //Kontrollery
     AgentCtrlInterface agentCtrl;
     MessageBoxesCtrlInterface messageBoxesCtrl;
 
+    /**
+     * Tworzy obiekt klasy MainCtrl
+     *
+     * @param initParams dane
+     */
     public MainCtrl(InitParamsInterface initParams) {
         this.initParams = initParams;
-        this.agentCtrl = new AgentCtrl(initParams);
         this.messageBoxesCtrl = new MessageBoxesCtrl(initParams);
+        this.agentCtrl = new AgentCtrl(initParams, messageBoxesCtrl);
         this.mainView = new Main(this.agentCtrl, this.messageBoxesCtrl);
-        messageBoxes = new Thread((Runnable) agentCtrl);
-        messageBoxes.start();
+
+        new Thread((Runnable) this.agentCtrl).start();
     }
 
+    /**
+     * Metoda udostepnijaca widok.
+     *
+     * @return Wyrenderowany widok
+     */
     @Override
     public Main render() {
         return mainView.drawView();
     }
 
+    /**
+     * metoda reagująca na zamknięcie okna dialogowego
+     */
     @Override
-    public void onParamsChange() {
+    public void onSubmit() {
         messageBoxesCtrl.onParamsChange();
         agentCtrl.onParamsChange();
         agentCtrl.unlock();
