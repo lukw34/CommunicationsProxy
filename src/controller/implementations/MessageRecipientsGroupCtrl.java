@@ -20,7 +20,7 @@ public class MessageRecipientsGroupCtrl implements RecipientGroupCtrlInterface<R
     private InitParamsInterface initParams;
     private int messageBoxesQuantiy = AppConfig.MAX_NUMBER_OF_THREADS;
 
-    private ArrayList<RecipientCtrlInterface> boxCtrls;
+    private ArrayList<RecipientCtrlInterface> recipientCtrls;
 
     /**
      * Tworzy obiekt klasy MessageRecipientsGroupCtrl.
@@ -30,10 +30,10 @@ public class MessageRecipientsGroupCtrl implements RecipientGroupCtrlInterface<R
     public MessageRecipientsGroupCtrl(InitParamsInterface initParams) {
         this.initParams = initParams;
         this.messageBoxesView = new RecipientGroup(this);
-        this.boxCtrls = new ArrayList<>();
+        this.recipientCtrls = new ArrayList<>();
 
         for (int messageBoxIndex = 0; messageBoxIndex < this.messageBoxesQuantiy; messageBoxIndex++) {
-            this.boxCtrls.add(new MessageRecipientCtrl("Thread" + messageBoxIndex, this));
+            this.recipientCtrls.add(new MessageRecipientCtrl("Thread" + messageBoxIndex, this));
         }
     }
 
@@ -54,7 +54,7 @@ public class MessageRecipientsGroupCtrl implements RecipientGroupCtrlInterface<R
      */
     @Override
     public Stream<Component> getRecipients() {
-        return this.boxCtrls.stream().map(RecipientCtrlInterface::render);
+        return this.recipientCtrls.stream().map(RecipientCtrlInterface::render);
     }
 
     /**
@@ -65,7 +65,7 @@ public class MessageRecipientsGroupCtrl implements RecipientGroupCtrlInterface<R
     @Override
     public RecipientCtrlInterface getRandomRecipient() {
         int randomIndex = (int) (Math.random() * this.initParams.getNumberOfThreaads());
-        return this.boxCtrls.get(randomIndex);
+        return this.recipientCtrls.get(randomIndex);
     }
 
     /**
@@ -74,12 +74,25 @@ public class MessageRecipientsGroupCtrl implements RecipientGroupCtrlInterface<R
     @Override
     public void onParamsChange() {
         for (int index = 0; index < messageBoxesQuantiy; index++) {
-            RecipientCtrlInterface box = boxCtrls.get(index);
+            RecipientCtrlInterface box = recipientCtrls.get(index);
             if (index < initParams.getNumberOfThreaads()) {
                 box.setState(box.getReady());
             } else {
                 box.setState(box.getEmpty());
             }
+        }
+    }
+
+    /**
+     * Logika zwiazana z zwiekszeniem ilosci watkow o 1.
+     */
+    @Override
+    public void addThread() {
+        int numberOfThreads = initParams.getNumberOfThreaads();
+        RecipientCtrlInterface setToActive = this.recipientCtrls.get(numberOfThreads);
+        if(setToActive != null) {
+            setToActive.setState(setToActive.getReady());
+            initParams.setNumberOfThreaads(numberOfThreads + 1);
         }
     }
 }

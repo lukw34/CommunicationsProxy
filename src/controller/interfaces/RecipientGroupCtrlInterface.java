@@ -28,4 +28,9 @@ public interface RecipientGroupCtrlInterface<T extends JPanel> extends ViewContr
      * Reakcja na zmiane parametrow.
      */
     void onParamsChange();
+
+    /**
+     * Dodanie watku.
+     */
+    void addThread();
 }

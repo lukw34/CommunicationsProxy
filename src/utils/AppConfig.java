@@ -7,13 +7,13 @@ public class AppConfig {
     /**
      * Rozmiar okna.
      */
-    public final static int J_FRAME_HEIGHT = 510;
+    public final static int J_FRAME_HEIGHT = 610;
     public final static int J_FRAME_WIDTH = 650;
 
     /**
      * Rozmiar wiadomosci.
      */
-    public final static int MESSAGE_BOX_HEIGHT = 50;
+    public final static int MESSAGE_BOX_HEIGHT = 45;
     public final static int MESSAGE_BOX_WIDTH = 115;
 
     /**

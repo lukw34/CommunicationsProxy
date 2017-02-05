@@ -1,6 +1,7 @@
 package controller.implementations;
 
 import controller.interfaces.AgentCtrlInterface;
+import controller.interfaces.HeaderCtrlInterface;
 import controller.interfaces.RecipientGroupCtrlInterface;
 import models.InitParamsInterface;
 import views.Main;
@@ -12,14 +13,15 @@ import views.SimpleView;
  */
 public class MainCtrl extends BaseCtrl<Main> {
     //Dane
-    InitParamsInterface initParams;
+    private InitParamsInterface initParams;
 
     //Podpięty widok
-    SimpleView<Main> mainView;
+    private SimpleView<Main> mainView;
 
     //Kontrollery
-    AgentCtrlInterface agentCtrl;
-    RecipientGroupCtrlInterface messageBoxesCtrl;
+    private AgentCtrlInterface agentCtrl;
+    private RecipientGroupCtrlInterface recipientGroupCtrl;
+    private HeaderCtrlInterface headerCtrl;
 
     /**
      * Tworzy obiekt klasy MainCtrl
@@ -28,9 +30,10 @@ public class MainCtrl extends BaseCtrl<Main> {
      */
     public MainCtrl(InitParamsInterface initParams) {
         this.initParams = initParams;
-        this.messageBoxesCtrl = new MessageRecipientsGroupCtrl(initParams);
-        this.agentCtrl = new AgentCtrl(initParams, messageBoxesCtrl);
-        this.mainView = new Main(this.agentCtrl, this.messageBoxesCtrl);
+        this.recipientGroupCtrl = new MessageRecipientsGroupCtrl(initParams);
+        this.agentCtrl = new AgentCtrl(initParams, recipientGroupCtrl);
+        this.headerCtrl = new AppHeaderCtrl(this.agentCtrl, this.recipientGroupCtrl);
+        this.mainView = new Main(this.agentCtrl, this.recipientGroupCtrl, this.headerCtrl);
 
         new Thread((Runnable) this.agentCtrl).start();
     }
@@ -50,7 +53,7 @@ public class MainCtrl extends BaseCtrl<Main> {
      */
     @Override
     public void onSubmit() {
-        messageBoxesCtrl.onParamsChange();
+        recipientGroupCtrl.onParamsChange();
         agentCtrl.onParamsChange();
         agentCtrl.unlock();
     }

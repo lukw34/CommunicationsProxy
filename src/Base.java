@@ -1,4 +1,3 @@
-import controller.implementations.AppHeaderCtrl;
 import controller.implementations.BaseCtrl;
 import controller.implementations.ConfigDialogCtrl;
 import controller.implementations.MainCtrl;
@@ -50,8 +49,6 @@ public class Base extends JFrame {
         initParams = new InitialParams();
         dialogCtrl = new ConfigDialogCtrl(initParams, this);
 
-        //Header
-        headerCtrl = new AppHeaderCtrl();
 
         //Main
         mainCtrl = new MainCtrl(initParams);
@@ -64,7 +61,6 @@ public class Base extends JFrame {
         initElements();
         dialogCtrl.render();
         add(footer, BorderLayout.PAGE_END);
-        add(headerCtrl.render(), BorderLayout.PAGE_START);
         add(mainCtrl.render(), BorderLayout.CENTER);
         setVisible(true);
         dialogCtrl.addSubscriber(mainCtrl);
