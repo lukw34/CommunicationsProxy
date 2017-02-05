@@ -1,14 +1,27 @@
 package models;
 
 
-import controller.interfaces.BoxCtrlInterface;
+import controller.interfaces.RecipientCtrlInterface;
 
 public interface Message {
-    BoxCtrlInterface getRecipient();
+    /**
+     * Udostepnia obiekt bedacy kontrolerem odbiorcy.
+     *
+     * @return Kontroler odbiorcy.
+     */
+    RecipientCtrlInterface getRecipient();
 
-    void setRecipiant(BoxCtrlInterface recipiant);
+    /**
+     * Umozliwia zmiane odbiorcy.
+     *
+     * @param recipiant Nowy odbiorca.
+     */
+    void setRecipiant(RecipientCtrlInterface recipiant);
 
-    void decorateMessage(int magicNumber);
-
+    /**
+     * Udostepnia zawartosc wiadomosci.
+     *
+     * @return Zawartosc wiadomosci.
+     */
     String getContent();
 }

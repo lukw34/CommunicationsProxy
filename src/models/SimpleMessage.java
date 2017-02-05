@@ -1,28 +1,28 @@
 package models;
 
-import controller.interfaces.BoxCtrlInterface;
+import controller.interfaces.RecipientCtrlInterface;
 
 /**
  * Klasa reorezentujaca prosta implementacje interfejsu Message reprezentujacy model danych.
  */
 public class SimpleMessage implements Message {
-    private BoxCtrlInterface recipient;
+    private RecipientCtrlInterface recipient;
     private String content;
 
     /**
      * Tworzy obiekt klasy SimpleMessage.
      *
      * @param recipient Odbiorca wiadomosci.
-     * @param content Zawartosc wiadomosci.
+     * @param content   Zawartosc wiadomosci.
      */
-    public SimpleMessage(BoxCtrlInterface recipient, String content) {
+    public SimpleMessage(RecipientCtrlInterface recipient, String content) {
         this.recipient = recipient;
         this.content = content;
     }
 
     @Override
-    public BoxCtrlInterface getRecipient() {
-        return recipient;
+    public RecipientCtrlInterface getRecipient() {
+        return this.recipient;
     }
 
     /**
@@ -31,18 +31,8 @@ public class SimpleMessage implements Message {
      * @param recipient Nowy odbiorca wiadomosci.
      */
     @Override
-    public void setRecipiant(BoxCtrlInterface recipient) {
+    public void setRecipiant(RecipientCtrlInterface recipient) {
         this.recipient = recipient;
-    }
-
-    /**
-     * Metoda odpowiedzialna za przetworzenie wiadomości.
-     *
-     * @param magicNumber Losowa liczba.
-     */
-    @Override
-    public void decorateMessage(int magicNumber) {
-        System.out.println(magicNumber);
     }
 
     /**
@@ -52,6 +42,6 @@ public class SimpleMessage implements Message {
      */
     @Override
     public String getContent() {
-        return content;
+        return this.content;
     }
 }

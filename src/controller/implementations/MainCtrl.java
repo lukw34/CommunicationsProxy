@@ -1,14 +1,14 @@
 package controller.implementations;
 
 import controller.interfaces.AgentCtrlInterface;
-import controller.interfaces.MessageBoxesCtrlInterface;
+import controller.interfaces.RecipientGroupCtrlInterface;
 import models.InitParamsInterface;
 import views.Main;
 import views.SimpleView;
 
 
 /**
- * Klasa reprezentujaca glowny kontroller aplikacji
+ * Klasa reprezentujaca glowny kontroller aplikacji.
  */
 public class MainCtrl extends BaseCtrl<Main> {
     //Dane
@@ -19,7 +19,7 @@ public class MainCtrl extends BaseCtrl<Main> {
 
     //Kontrollery
     AgentCtrlInterface agentCtrl;
-    MessageBoxesCtrlInterface messageBoxesCtrl;
+    RecipientGroupCtrlInterface messageBoxesCtrl;
 
     /**
      * Tworzy obiekt klasy MainCtrl
@@ -28,7 +28,7 @@ public class MainCtrl extends BaseCtrl<Main> {
      */
     public MainCtrl(InitParamsInterface initParams) {
         this.initParams = initParams;
-        this.messageBoxesCtrl = new MessageBoxesCtrl(initParams);
+        this.messageBoxesCtrl = new MessageRecipientsGroupCtrl(initParams);
         this.agentCtrl = new AgentCtrl(initParams, messageBoxesCtrl);
         this.mainView = new Main(this.agentCtrl, this.messageBoxesCtrl);
 
@@ -46,7 +46,7 @@ public class MainCtrl extends BaseCtrl<Main> {
     }
 
     /**
-     * metoda reagująca na zamknięcie okna dialogowego
+     * Metoda reagująca na zamknięcie okna dialogowego.
      */
     @Override
     public void onSubmit() {

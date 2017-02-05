@@ -3,41 +3,41 @@ package controller.implementations;
 import controller.implementations.box.BoxEmptyState;
 import controller.implementations.box.BoxProcessingState;
 import controller.implementations.box.BoxReadyState;
-import controller.interfaces.BoxCtrlInterface;
-import controller.interfaces.BoxState;
-import controller.interfaces.MessageBoxesCtrlInterface;
+import controller.interfaces.RecipientCtrlInterface;
+import controller.interfaces.RecipientState;
+import controller.interfaces.RecipientGroupCtrlInterface;
 import controller.interfaces.MessageCtrlInterface;
 import models.Message;
-import views.MessageBox;
+import views.Recipient;
 import views.SimpleView;
 
 import java.awt.*;
 
 /**
  * Klasa reprezentując kontroller zarzadzający watkiem
- * Implementuje ona interfejsy BoxCtrlInterface i Runnable
+ * Implementuje ona interfejsy RecipientCtrlInterface i Runnable
  */
-public class MessageBoxCtrl implements BoxCtrlInterface<MessageBox>, Runnable {
+public class MessageRecipientCtrl implements RecipientCtrlInterface<Recipient>, Runnable {
     private String threadName;
 
-    private BoxState ready;
-    private BoxState empty;
-    private BoxState processing;
+    private RecipientState ready;
+    private RecipientState empty;
+    private RecipientState processing;
 
-    private BoxState actualState;
+    private RecipientState actualState;
 
     private MessageCtrlInterface messageCtrl;
-    MessageBoxesCtrlInterface parentCtrl;
+    private RecipientGroupCtrlInterface parentCtrl;
 
-    private SimpleView<MessageBox> boxView;
+    private SimpleView<Recipient> boxView;
 
     /**
      * Bezargumentowy konstruktor
      */
-    public MessageBoxCtrl(String threadName, MessageBoxesCtrlInterface messageBoxesCtrl) {
+    public MessageRecipientCtrl(String threadName, RecipientGroupCtrlInterface messageBoxesCtrl) {
         this.threadName = threadName;
         this.parentCtrl = messageBoxesCtrl;
-        this.boxView = new MessageBox(this);
+        this.boxView = new Recipient(this);
         this.ready = new BoxReadyState();
         this.empty = new BoxEmptyState();
         this.processing = new BoxProcessingState();
@@ -50,7 +50,7 @@ public class MessageBoxCtrl implements BoxCtrlInterface<MessageBox>, Runnable {
      * @param state nowy stan
      */
     @Override
-    public void setState(BoxState state) {
+    public void setState(RecipientState state) {
         this.actualState = state;
         this.repaint();
     }
@@ -96,23 +96,27 @@ public class MessageBoxCtrl implements BoxCtrlInterface<MessageBox>, Runnable {
      * @return Wyrenderowany widok
      */
     @Override
-    public MessageBox render() {
+    public Recipient render() {
         return this.boxView.drawView();
     }
 
     /**
+     * Metoda zwracajaca stan odpowiedzialny za reprezentacje pustej wiadomosci.
+     *
      * @return Stan reprezentujący nieaktywny wątek
      */
     @Override
-    public BoxState getEmpty() {
+    public RecipientState getEmpty() {
         return this.empty;
     }
 
     /**
-     * @return Stan reprezentujaćy gotowość wątku do przetworzenia wiadomości
+     * Metoda zwracajaca stan reprezentujaćy gotowość wątku do przetworzenia wiadomości.
+     *
+     * @return Stan reprezentujaćy gotowość wątku do przetworzenia wiadomości.
      */
     @Override
-    public BoxState getReady() {
+    public RecipientState getReady() {
         return this.ready;
     }
 

@@ -1,15 +1,21 @@
 package controller.implementations.box;
 
-import controller.interfaces.BoxState;
+import controller.interfaces.RecipientState;
 import utils.AppConfig;
 
 import java.awt.*;
 
-public class BoxEmptyState implements BoxState {
+
+/**
+ * Klasa reprezentujaca pustego adresata.
+ */
+public class BoxEmptyState implements RecipientState {
 
     /**
-     * @param g
-     * @param startPoint
+     * Metoda rysujaca widok prezentujaca pustego adresata.
+     *
+     * @param g Grafika.
+     * @param startPoint Punkt poczatkowy.
      */
     @Override
     public void paint(Graphics g, Point startPoint) {

@@ -10,40 +10,67 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
+/**
+ * Klasa implementujaca kontroler okna dialgowego(konfiguracyjnego)
+ */
 public class ConfigDialogCtrl implements DialogCtrlInterface<Integer, ConfigDialog> {
 
-    SimpleView<ConfigDialog> configDialogSimpleView;
-    InitParamsInterface initParams;
+    private SimpleView<ConfigDialog> configDialogSimpleView;
+    private InitParamsInterface initParams;
 
-    ArrayList<DialogSubscriber> subscribers;
+    private ArrayList<DialogSubscriber> subscribers;
 
+    /**
+     * Tworzy klase ConfigDialogCtrl
+     *
+     * @param initParams Parametry inicjalizujace.
+     * @param parent     Nadrzedny JFrame.
+     */
     public ConfigDialogCtrl(InitParamsInterface initParams, JFrame parent) {
         this.initParams = initParams;
         this.configDialogSimpleView = new ConfigDialog(parent, this);
-        subscribers = new ArrayList<>();
+        this.subscribers = new ArrayList<>();
     }
 
+    /**
+     * Metoda wyswietlajaca okno dialogowe.
+     */
     @Override
     public void showDialog() {
         configDialogSimpleView.setVisible(true);
     }
 
+    /**
+     * Metoda reagujace na zmiane ilosci wiadomosci.
+     *
+     * @param numberOfMessages Nowa wartosc.
+     */
     @Override
     public void changeMessageQuantity(Integer numberOfMessages) {
-        initParams.setMessageQuantity(numberOfMessages);
+        this.initParams.setMessageQuantity(numberOfMessages);
     }
 
+    /**
+     * Metoda reagujace na zmiane ilosci watkow(adresatow).
+     *
+     * @param numberOfThreads Nowa wartosc.
+     */
     @Override
     public void changeNumberOfThreads(Integer numberOfThreads) {
-        initParams.setNumberOfThreaads(numberOfThreads);
+        this.initParams.setNumberOfThreaads(numberOfThreads);
     }
 
+    /**
+     * Metoda zajmujaca sie logika zwiazana z zamknieciem ogna dialogowym.
+     * Powiadamia wszystkich zdefiniowanych interesariuszy.
+     *
+     * @param event Akcja zamkniecia okna dialogowego.
+     */
     @Override
     public void closeDialog(ActionEvent event) {
-        subscribers.forEach(DialogSubscriber::onSubmit);
-        configDialogSimpleView.setVisible(false);
+        this.subscribers.forEach(DialogSubscriber::onSubmit);
+        this.configDialogSimpleView.setVisible(false);
     }
-
 
     /**
      * Dodaje kontrollery, które zosta poinformowane, gdy okno dialogowe zostanie zamkniete.
@@ -52,7 +79,7 @@ public class ConfigDialogCtrl implements DialogCtrlInterface<Integer, ConfigDial
      */
     @Override
     public void addSubscriber(DialogSubscriber viewController) {
-        subscribers.add(viewController);
+        this.subscribers.add(viewController);
     }
 
     /**
@@ -62,6 +89,6 @@ public class ConfigDialogCtrl implements DialogCtrlInterface<Integer, ConfigDial
      */
     @Override
     public ConfigDialog render() {
-        return configDialogSimpleView.drawView();
+        return this.configDialogSimpleView.drawView();
     }
 }

@@ -8,34 +8,47 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.concurrent.ExecutionException;
 
-
+/**
+ * Klasa reprezentujaca widok naglowka.
+ */
 public class Header extends JPanel implements SimpleView<Header> {
+    //Elementy
     private JButton reset;
     private JLabel title;
     private Border border;
 
+    /**
+     * Torzenie(rysowanie) widoku naglowka.
+     *
+     * @return Narysowany/gotowy widok.
+     */
     @Override
     public Header drawView() {
-        setLayout(new BorderLayout());
-        initElements();
+        this.setLayout(new BorderLayout());
+        this.initElements();
 
-        add(title, BorderLayout.NORTH);
-        setBorder(border);
+        this.add(title, BorderLayout.NORTH);
+        this.setBorder(border);
         return this;
     }
 
-
+    /**
+     * Inicjalizuje elementy widoku.
+     */
     private void initElements() {
-        loadReset.run();
+        this.imageLoader.run();
         Border raisedbevel = BorderFactory.createRaisedBevelBorder();
         Border loweredbevel = BorderFactory.createLoweredBevelBorder();
         this.border = BorderFactory.createCompoundBorder(raisedbevel, loweredbevel);
-        title = new JLabel("Symulator pośrednika wiadomości.");
-        title.setFont(new Font("Sans Serif", Font.BOLD, 20));
-        title.setHorizontalAlignment(SwingConstants.CENTER);
+        this.title = new JLabel("Symulator pośrednika wiadomości.");
+        this.title.setFont(new Font("Sans Serif", Font.BOLD, 20));
+        this.title.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
-    private SwingWorker<Image, ImageIcon> loadReset = new SwingWorker<Image, ImageIcon>() {
+    /**
+     * Metoda ladujaca obrazki.
+     */
+    private SwingWorker<Image, ImageIcon> imageLoader = new SwingWorker<Image, ImageIcon>() {
 
         @Override
         protected Image doInBackground() throws Exception {
@@ -54,8 +67,4 @@ public class Header extends JPanel implements SimpleView<Header> {
             }
         }
     };
-
-
-    @Override
-    public void setVisible(boolean isVisible) {}
 }

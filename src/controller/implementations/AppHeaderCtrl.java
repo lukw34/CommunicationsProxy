@@ -1,18 +1,21 @@
 package controller.implementations;
 
-import controller.interfaces.DialogCtrlInterface;
 import controller.interfaces.HeaderCtrlInterface;
 import views.Header;
 import views.SimpleView;
 
+/**
+ * Klasa bedaca kontrolerem naglowka.
+ */
 public class AppHeaderCtrl implements HeaderCtrlInterface<Header> {
 
-    SimpleView<Header> header;
-    DialogCtrlInterface dialogCtrl;
+    private SimpleView<Header> header;
 
-    public AppHeaderCtrl( DialogCtrlInterface dialogCtrl) {
+    /**
+     * Tworzy obiket klasy AppHeaderCtrl
+     */
+    public AppHeaderCtrl() {
         this.header = new Header();
-        this.dialogCtrl = dialogCtrl;
     }
 
     /**
@@ -22,7 +25,7 @@ public class AppHeaderCtrl implements HeaderCtrlInterface<Header> {
      */
     @Override
     public Header render() {
-        return header.drawView();
+        return this.header.drawView();
     }
 
 }

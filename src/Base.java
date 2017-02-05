@@ -2,54 +2,64 @@ import controller.implementations.AppHeaderCtrl;
 import controller.implementations.BaseCtrl;
 import controller.implementations.ConfigDialogCtrl;
 import controller.implementations.MainCtrl;
-import controller.interfaces.AgentCtrlInterface;
 import controller.interfaces.DialogCtrlInterface;
 import controller.interfaces.HeaderCtrlInterface;
-import models.Message;
-import utils.AppConfig;
 import models.InitParamsInterface;
 import models.InitialParams;
+import utils.AppConfig;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Klasa reprezentujaca glowne okno aplikacji
+ */
 public class Base extends JFrame {
     private JLabel footer;
 
     /**
-     * Controllers
+     * Kontrolery
      */
-    DialogCtrlInterface dialogCtrl;
-    HeaderCtrlInterface headerCtrl;
-    BaseCtrl mainCtrl;
+    private DialogCtrlInterface dialogCtrl;
+    private HeaderCtrlInterface headerCtrl;
+    private BaseCtrl mainCtrl;
 
     /**
      * Models
      */
-    InitParamsInterface initParams;
+    private InitParamsInterface initParams;
 
+    /**
+     * Tworzy obiekt klasy Base(ramka).
+     */
     public Base() {
         super("MessageWaiting");
-        config();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.config();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension size = new Dimension(AppConfig.J_FRAME_WIDTH, AppConfig.J_FRAME_HEIGHT);
-        setSize(size);
-        setResizable(false);
-        setLocationRelativeTo(null);
+        this.setSize(size);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
+    /**
+     * Metoda konfigurujaca aplikacje.
+     */
     private void config() {
         //Dialog
         initParams = new InitialParams();
         dialogCtrl = new ConfigDialogCtrl(initParams, this);
 
         //Header
-        headerCtrl = new AppHeaderCtrl(dialogCtrl);
+        headerCtrl = new AppHeaderCtrl();
 
         //Main
         mainCtrl = new MainCtrl(initParams);
     }
 
+    /**
+     * Metoda odpalajaca aplikacje.
+     */
     public void render() {
         initElements();
         dialogCtrl.render();
@@ -61,6 +71,9 @@ public class Base extends JFrame {
         dialogCtrl.showDialog();
     }
 
+    /**
+     * Metoda inicjalizujaca elementy.
+     */
     private void initElements() {
         footer = new JLabel("Autor: Łukasz Walewski (188584)");
     }

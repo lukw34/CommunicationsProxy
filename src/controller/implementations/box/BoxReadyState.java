@@ -1,11 +1,14 @@
 package controller.implementations.box;
 
-import controller.interfaces.BoxState;
+import controller.interfaces.RecipientState;
 import utils.AppConfig;
 
 import java.awt.*;
 
-public class BoxReadyState implements BoxState {
+/**
+ * Klasa reprezentujaca gotowosc adresata do odbioru wiadomosci
+ */
+public class BoxReadyState implements RecipientState {
     /**
      * Metoda rysujaca widok prezentujacy mozliwosc odebrania wiadmosci.
      *

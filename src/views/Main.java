@@ -1,47 +1,45 @@
 package views;
 
 import controller.interfaces.AgentCtrlInterface;
-import controller.interfaces.MessageBoxesCtrlInterface;
+import controller.interfaces.RecipientGroupCtrlInterface;
 import utils.GridBagLayoutHelper;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Klasa reprezentujaca glowny widok.
+ */
+public class Main extends JPanel implements SimpleView<Main> {
 
-public class Main extends JPanel implements SimpleView {
+    //Kontrolery
+    private AgentCtrlInterface agentCtrl;
+    private RecipientGroupCtrlInterface recipientGroupCtrl;
 
-    //Controllers
-    AgentCtrlInterface agentCtrl;
-
-
-    MessageBoxesCtrlInterface messageBoxesCtrl;
-
-    GridBagConstraints gbc;
-
-    public Main(AgentCtrlInterface agentCtrl, MessageBoxesCtrlInterface messageBoxesCtrl) {
+    /**
+     * Tworzenie klasy Main(widok)
+     *
+     * @param agentCtrl Kontroler posrednika
+     * @param recipientGroupCtrl Kontroler grupy odbiorcow.
+     */
+    public Main(AgentCtrlInterface agentCtrl, RecipientGroupCtrlInterface recipientGroupCtrl) {
         this.agentCtrl = agentCtrl;
-        this.messageBoxesCtrl = messageBoxesCtrl;
+        this.recipientGroupCtrl = recipientGroupCtrl;
     }
 
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-    }
-
+    /**
+     * Torzenie(rysowanie) glownego widoku.
+     *
+     * @return Narysowany/gotowy widok.
+     */
     @Override
     public Main drawView() {
-        gbc = new GridBagConstraints();
-        setLayout(new GridBagLayout());
+        this.setLayout(new GridBagLayout());
 
-        GridBagLayoutHelper.addComp(this, messageBoxesCtrl.render(), 0, 0, 1, 2,
+        GridBagLayoutHelper.addComp(this, recipientGroupCtrl.render(), 0, 0, 1, 2,
                 GridBagConstraints.BOTH, 0.6, 1.0);
         GridBagLayoutHelper.addComp(this, agentCtrl.render(), 1, 0, 1, 1,
                 GridBagConstraints.BOTH, 0.4, 1.0);
         return this;
-    }
-
-    @Override
-    public void setVisible(boolean aFlag) {
-        super.setVisible(aFlag);
     }
 }

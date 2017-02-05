@@ -3,9 +3,13 @@ package utils;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Klasa ulatwiajaca prace na GridBagLayout.
+ */
 public class GridBagLayoutHelper {
 
     /**
+     * Metoda ulatwiajaca umieszczenia komponentu w GridBagLayout.
      *
      * @param panel Panel do którego zostanie doddany komponent.
      * @param comp Dodawany komponent

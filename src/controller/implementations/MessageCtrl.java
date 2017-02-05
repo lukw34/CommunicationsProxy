@@ -12,6 +12,9 @@ import views.SimpleView;
 import java.awt.*;
 import java.util.concurrent.Semaphore;
 
+/**
+ * Klasa implementujaca kontroler odpowiadajacy wiadomosci.
+ */
 public class MessageCtrl implements MessageCtrlInterface<MessageView> {
     private Semaphore semaphore;
 
@@ -24,6 +27,9 @@ public class MessageCtrl implements MessageCtrlInterface<MessageView> {
     private SimpleView<MessageView> messageView;
     private Message message;
 
+    /**
+     * Tworzy obiekt klasy MessageCtrl
+     */
     MessageCtrl() {
         this.messageView = new MessageView(this);
         this.empty = new MessageEmpty();
@@ -45,26 +51,49 @@ public class MessageCtrl implements MessageCtrlInterface<MessageView> {
         this.repaint();
     }
 
+    /**
+     * Metoda podmieniajaca przechowywana wiadomosc.
+     *
+     * @param message Nowa wiadomość
+     */
     @Override
     public void setMessage(Message message) {
         this.message = message;
     }
 
+    /**
+     * Udostepnia przechowywana wiadomosc.
+     *
+     * @return Wiadomosc
+     */
     @Override
     public Message getMessage() {
         return message;
     }
 
+    /**
+     * Metoda rysująca grafike na podstawie aktualnego stanu
+     *
+     * @param g grafika
+     */
     @Override
     public void paint(Graphics g) {
-        actualState.paint(g, new Point(0, 0));
+        this.actualState.paint(g, new Point(0, 0));
     }
 
+    /**
+     * Metod odświeżająca wygląd grafiki
+     */
     @Override
     public void repaint() {
         messageView.repaint();
     }
 
+    /**
+     * Zwraca stan odpowiadjący pustej wiadomości.
+     *
+     * @return Stan odpowiadjący pustej wiadomości.
+     */
     @Override
     public MessageState getEmpty() {
         return empty;
@@ -91,7 +120,7 @@ public class MessageCtrl implements MessageCtrlInterface<MessageView> {
             this.setState(this.processing);
             Thread.sleep(750);
             new Thread(() -> {
-                boolean isSucces = message.getRecipient().onReciveMessage(this) ;
+                boolean isSucces = message.getRecipient().onReciveMessage(this);
                 if (isSucces) {
                     this.setState(this.empty);
                 } else {
@@ -112,5 +141,4 @@ public class MessageCtrl implements MessageCtrlInterface<MessageView> {
     public MessageView render() {
         return messageView.drawView();
     }
-
 }

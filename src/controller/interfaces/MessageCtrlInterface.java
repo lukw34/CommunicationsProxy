@@ -59,7 +59,7 @@ public interface MessageCtrlInterface<T extends Component> extends ViewControlle
     /**
      * Umożliwia wyslanie wiadomosci, metoda powinna zawierac logike zwiazana z ta czynnoscia.
      *
-     * @throws InterruptedException Zwiazany z wyjatkami rzucanym w czasie pracy watku
+     * @throws InterruptedException Zwiazany z wyjatkami rzucanym w czasie pracy watku.
      */
     void sendIfPossible() throws InterruptedException;
 }
