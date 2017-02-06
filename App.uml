@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>App</OriginalElement>
+  <nodes>
+    <node x="906.9412202380953" y="558.0">views.Agent</node>
+    <node x="475.0" y="1182.0">App</node>
+    <node x="208.0" y="1182.0">utils.AppConfig</node>
+    <node x="177.0" y="1109.0">controller.implementations.message.MessageWaiting</node>
+    <node x="402.44122023809524" y="420.0">javax.swing.JDialog</node>
+    <node x="1094.5" y="719.0">controller.interfaces.AgentCtrlInterface</node>
+    <node x="1260.5" y="719.0">java.lang.Runnable</node>
+    <node x="845.6913392857143" y="0.0">java.awt.image.ImageObserver</node>
+    <node x="746.2535714285714" y="420.0">views.SimpleView</node>
+    <node x="0.0" y="631.0">controller.interfaces.DialogSubscriber</node>
+    <node x="502.0" y="1031.0">models.InitParamsInterface</node>
+    <node x="469.0" y="958.0">controller.implementations.box.BoxCountingsState</node>
+    <node x="1199.702380952381" y="807.0">controller.implementations.AgentCtrl</node>
+    <node x="331.0" y="1109.0">controller.implementations.message.MessageEmpty</node>
+    <node x="379.50000000000006" y="719.0">controller.interfaces.MessageCtrlInterface</node>
+    <node x="323.0" y="958.0">controller.implementations.box.BoxEmptyState</node>
+    <node x="137.02583333333325" y="420.0">javax.swing.JFrame</node>
+    <node x="453.99999999999994" y="322.0">java.awt.Dialog</node>
+    <node x="581.5" y="631.0">controller.interfaces.ViewController</node>
+    <node x="701.0" y="1109.0">models.SimpleMessage</node>
+    <node x="14.0" y="322.0">java.awt.Frame</node>
+    <node x="446.5663392857143" y="156.0">javax.accessibility.Accessible</node>
+    <node x="856.6913392857143" y="78.0">java.awt.Component</node>
+    <node x="176.99999999999997" y="958.0">controller.implementations.box.BoxReadyState</node>
+    <node x="991.6913392857143" y="0.0">java.io.Serializable</node>
+    <node x="758.9412202380953" y="558.0">views.RecipientGroup</node>
+    <node x="0.0" y="1182.0">utils.GridBagLayoutHelper</node>
+    <node x="1105.9412202380954" y="558.0">views.Header</node>
+    <node x="0.0" y="958.0">controller.implementations.box.BoxProcessingState</node>
+    <node x="748.0" y="807.0">controller.implementations.ConfigDialogCtrl</node>
+    <node x="915.233005952381" y="420.0">javax.swing.JPanel</node>
+    <node x="290.99999999999994" y="322.0">javax.swing.WindowConstants</node>
+    <node x="251.0" y="880.0">controller.interfaces.RecipientState</node>
+    <node x="739.5" y="719.0">controller.interfaces.DialogCtrlInterface</node>
+    <node x="348.0" y="1182.0">utils.Timeout</node>
+    <node x="949.25" y="807.0">controller.implementations.MessageRecipientCtrl</node>
+    <node x="627.2258333333332" y="244.0">javax.swing.TransferHandler.HasGetTransferHandler</node>
+    <node x="1229.5" y="631.0">java.lang.FunctionalInterface</node>
+    <node x="411.94122023809524" y="558.0">views.ConfigDialog</node>
+    <node x="721.5" y="1031.0">models.Message</node>
+    <node x="564.5" y="719.0">controller.interfaces.HeaderCtrlInterface</node>
+    <node x="407.5000000000001" y="807.0">controller.implementations.MessageCtrl</node>
+    <node x="995.9412202380953" y="558.0">views.Recipient</node>
+    <node x="862.1913392857143" y="156.0">java.awt.Container</node>
+    <node x="49.0" y="807.0">controller.implementations.MainCtrl</node>
+    <node x="183.0" y="1031.0">controller.interfaces.MessageState</node>
+    <node x="622.9412202380953" y="558.0">views.MessageView</node>
+    <node x="907.5" y="719.0">controller.interfaces.RecipientCtrlInterface</node>
+    <node x="48.0" y="719.0">controller.implementations.BaseCtrl</node>
+    <node x="523.0" y="1109.0">models.InitialParams</node>
+    <node x="580.5" y="807.0">controller.implementations.AppHeaderCtrl</node>
+    <node x="928.733005952381" y="322.0">javax.swing.JComponent</node>
+    <node x="151.0" y="807.0">controller.implementations.MessageRecipientsGroupCtrl</node>
+    <node x="430.24999999999994" y="244.0">java.awt.Window</node>
+    <node x="154.5" y="719.0">controller.interfaces.RecipientGroupCtrlInterface</node>
+    <node x="541.9412202380953" y="558.0">views.Main</node>
+    <node x="0.0" y="0.0">java.awt.MenuContainer</node>
+    <node x="116.99999999999994" y="322.0">javax.swing.RootPaneContainer</node>
+    <node x="0.0" y="1109.0">controller.implementations.message.MessageProcessing</node>
+    <node x="142.52583333333325" y="558.0">Base</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="javax.swing.JComponent" target="java.awt.Container">
+      <point x="0.0" y="-14.0" />
+      <point x="982.233005952381" y="292.0" />
+      <point x="931.9413392857143" y="292.0" />
+      <point x="23.25" y="14.0" />
+    </edge>
+    <edge source="views.Header" target="javax.swing.JPanel">
+      <point x="19.5" y="-14.0" />
+      <point x="1164.4412202380954" y="468.0" />
+      <point x="979.3996726190476" y="468.0" />
+      <point x="29.16666666666663" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.box.BoxProcessingState" target="controller.interfaces.RecipientState">
+      <point x="0.0" y="-14.0" />
+      <point x="78.5" y="928.0" />
+      <point x="266.5" y="928.0" />
+      <point x="-46.5" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JPanel" target="javax.accessibility.Accessible">
+      <point x="-17.5" y="-14.0" />
+      <point x="932.733005952381" y="400.0" />
+      <point x="894.4413392857143" y="400.0" />
+      <point x="894.4413392857143" y="204.0" />
+      <point x="532.3163392857143" y="204.0" />
+      <point x="36.75" y="14.0" />
+    </edge>
+    <edge source="java.awt.Dialog" target="java.awt.Window">
+      <point x="0.0" y="-14.0" />
+      <point x="19.75" y="14.0" />
+    </edge>
+    <edge source="views.ConfigDialog" target="views.SimpleView">
+      <point x="27.499999999999943" y="-14.0" />
+      <point x="494.4412202380952" y="488.0" />
+      <point x="753.4678571428572" y="488.0" />
+      <point x="-43.285714285714334" y="14.0" />
+    </edge>
+    <edge source="views.Recipient" target="javax.swing.JPanel">
+      <point x="22.5" y="-14.0" />
+      <point x="1063.4412202380954" y="488.0" />
+      <point x="967.733005952381" y="488.0" />
+      <point x="17.5" y="14.0" />
+    </edge>
+    <edge source="views.ConfigDialog" target="javax.swing.JDialog">
+      <point x="-27.500000000000057" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.awt.Component" target="java.awt.image.ImageObserver">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="models.InitialParams" target="models.InitParamsInterface">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="views.Recipient" target="views.SimpleView">
+      <point x="-22.5" y="-14.0" />
+      <point x="1018.4412202380953" y="498.0" />
+      <point x="825.6107142857143" y="498.0" />
+      <point x="28.85714285714289" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.BaseCtrl" target="controller.interfaces.DialogSubscriber">
+      <point x="-21.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.awt.Frame" target="java.awt.Window">
+      <point x="17.75" y="-14.0" />
+      <point x="67.25" y="292.0" />
+      <point x="449.99999999999994" y="292.0" />
+      <point x="-19.75" y="14.0" />
+    </edge>
+    <edge source="controller.interfaces.DialogCtrlInterface" target="controller.interfaces.ViewController">
+      <point x="0.0" y="-14.0" />
+      <point x="813.5" y="699.0" />
+      <point x="659.2857142857144" y="699.0" />
+      <point x="17.285714285714334" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.AppHeaderCtrl" target="controller.interfaces.HeaderCtrlInterface">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.box.BoxEmptyState" target="controller.interfaces.RecipientState">
+      <point x="0.0" y="-14.0" />
+      <point x="386.0" y="938.0" />
+      <point x="328.5" y="938.0" />
+      <point x="15.5" y="14.0" />
+    </edge>
+    <edge source="java.awt.Frame" target="java.awt.MenuContainer">
+      <point x="-17.75" y="-14.0" />
+      <point x="-31.75" y="14.0" />
+    </edge>
+    <edge source="views.RecipientGroup" target="javax.swing.JPanel">
+      <point x="32.0" y="-14.0" />
+      <point x="854.9412202380953" y="538.0" />
+      <point x="944.3996726190476" y="538.0" />
+      <point x="-5.833333333333371" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.MessageCtrl" target="controller.interfaces.MessageCtrlInterface">
+      <point x="-5.6843418860808015E-14" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JFrame" target="javax.accessibility.Accessible">
+      <point x="-14.799999999999955" y="-14.0" />
+      <point x="159.2258333333333" y="390.0" />
+      <point x="95.49999999999994" y="390.0" />
+      <point x="95.49999999999994" y="214.0" />
+      <point x="458.8163392857143" y="214.0" />
+      <point x="-36.75" y="14.0" />
+    </edge>
+    <edge source="views.Agent" target="views.SimpleView">
+      <point x="-17.25" y="-14.0" />
+      <point x="924.1912202380953" y="508.0" />
+      <point x="811.1821428571429" y="508.0" />
+      <point x="14.428571428571445" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.message.MessageProcessing" target="controller.interfaces.MessageState">
+      <point x="0.0" y="-14.0" />
+      <point x="78.5" y="1084.0" />
+      <point x="203.33333333333334" y="1084.0" />
+      <point x="-40.66666666666666" y="14.0" />
+    </edge>
+    <edge source="controller.interfaces.MessageCtrlInterface" target="controller.interfaces.ViewController">
+      <point x="-5.6843418860808015E-14" y="-14.0" />
+      <point x="462.0" y="699.0" />
+      <point x="624.7142857142858" y="699.0" />
+      <point x="-17.28571428571422" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.AgentCtrl" target="java.lang.Runnable">
+      <point x="22.5" y="-14.0" />
+      <point x="1267.202380952381" y="787.0" />
+      <point x="1328.75" y="787.0" />
+      <point x="22.75" y="14.0" />
+    </edge>
+    <edge source="views.MessageView" target="views.SimpleView">
+      <point x="-29.0" y="-14.0" />
+      <point x="651.9412202380953" y="508.0" />
+      <point x="782.325" y="508.0" />
+      <point x="-14.428571428571445" y="14.0" />
+    </edge>
+    <edge source="java.awt.Window" target="javax.accessibility.Accessible">
+      <point x="-19.75" y="-14.0" />
+      <point x="449.99999999999994" y="224.0" />
+      <point x="483.3163392857143" y="224.0" />
+      <point x="-12.25" y="14.0" />
+    </edge>
+    <edge source="views.MessageView" target="javax.swing.JPanel">
+      <point x="29.0" y="-14.0" />
+      <point x="709.9412202380953" y="528.0" />
+      <point x="932.733005952381" y="528.0" />
+      <point x="-17.5" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.MessageRecipientsGroupCtrl" target="controller.interfaces.RecipientGroupCtrlInterface">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.MainCtrl" target="controller.implementations.BaseCtrl">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.BaseCtrl" target="controller.interfaces.ViewController">
+      <point x="21.0" y="-14.0" />
+      <point x="111.0" y="679.0" />
+      <point x="590.1428571428571" y="679.0" />
+      <point x="-51.85714285714289" y="14.0" />
+    </edge>
+    <edge source="java.awt.Component" target="java.io.Serializable">
+      <point x="34.66666666666663" y="-14.0" />
+      <point x="943.358005952381" y="53.0" />
+      <point x="1017.1913392857143" y="53.0" />
+      <point x="-25.5" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.box.BoxReadyState" target="controller.interfaces.RecipientState">
+      <point x="2.8421709430404007E-14" y="-14.0" />
+      <point x="240.0" y="938.0" />
+      <point x="297.5" y="938.0" />
+      <point x="-15.5" y="14.0" />
+    </edge>
+    <edge source="controller.interfaces.RecipientGroupCtrlInterface" target="controller.interfaces.ViewController">
+      <point x="0.0" y="-14.0" />
+      <point x="257.0" y="689.0" />
+      <point x="607.4285714285716" y="689.0" />
+      <point x="-34.571428571428555" y="14.0" />
+    </edge>
+    <edge source="controller.interfaces.HeaderCtrlInterface" target="controller.interfaces.ViewController">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="views.Agent" target="javax.swing.JPanel">
+      <point x="17.25" y="-14.0" />
+      <point x="958.6912202380953" y="538.0" />
+      <point x="956.0663392857143" y="538.0" />
+      <point x="5.833333333333371" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JDialog" target="javax.swing.RootPaneContainer">
+      <point x="-29.599999999999966" y="-14.0" />
+      <point x="409.8412202380953" y="390.0" />
+      <point x="232.49999999999994" y="390.0" />
+      <point x="38.5" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JPanel" target="javax.swing.JComponent">
+      <point x="17.5" y="-14.0" />
+      <point x="967.733005952381" y="400.0" />
+      <point x="982.233005952381" y="400.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="views.Main" target="javax.swing.JPanel">
+      <point x="15.25" y="-14.0" />
+      <point x="587.6912202380953" y="518.0" />
+      <point x="921.0663392857143" y="518.0" />
+      <point x="-29.16666666666663" y="14.0" />
+    </edge>
+    <edge source="controller.interfaces.RecipientCtrlInterface" target="controller.interfaces.ViewController">
+      <point x="0.0" y="-14.0" />
+      <point x="991.0" y="689.0" />
+      <point x="676.5714285714287" y="689.0" />
+      <point x="34.571428571428555" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.ConfigDialogCtrl" target="controller.interfaces.DialogCtrlInterface">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.message.MessageEmpty" target="controller.interfaces.MessageState">
+      <point x="0.0" y="-14.0" />
+      <point x="394.0" y="1084.0" />
+      <point x="284.66666666666663" y="1084.0" />
+      <point x="40.66666666666663" y="14.0" />
+    </edge>
+    <edge source="views.Main" target="views.SimpleView">
+      <point x="-15.25" y="-14.0" />
+      <point x="557.1912202380953" y="498.0" />
+      <point x="767.8964285714285" y="498.0" />
+      <point x="-28.85714285714289" y="14.0" />
+    </edge>
+    <edge source="java.lang.Runnable" target="java.lang.FunctionalInterface">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.box.BoxCountingsState" target="controller.interfaces.RecipientState">
+      <point x="0.0" y="-14.0" />
+      <point x="544.5" y="928.0" />
+      <point x="359.5" y="928.0" />
+      <point x="46.5" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JDialog" target="java.awt.Dialog">
+      <point x="0.0" y="-14.0" />
+      <point x="439.44122023809524" y="380.0" />
+      <point x="489.49999999999994" y="380.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JFrame" target="javax.swing.RootPaneContainer">
+      <point x="14.800000000000011" y="-14.0" />
+      <point x="188.82583333333326" y="370.0" />
+      <point x="155.49999999999994" y="370.0" />
+      <point x="-38.5" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JDialog" target="javax.swing.TransferHandler.HasGetTransferHandler">
+      <point x="29.600000000000023" y="-14.0" />
+      <point x="469.04122023809526" y="400.0" />
+      <point x="716.7258333333332" y="400.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.interfaces.AgentCtrlInterface" target="controller.interfaces.ViewController">
+      <point x="0.0" y="-14.0" />
+      <point x="1167.5" y="679.0" />
+      <point x="693.8571428571429" y="679.0" />
+      <point x="51.85714285714289" y="14.0" />
+    </edge>
+    <edge source="Base" target="javax.swing.JFrame">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JComponent" target="javax.swing.TransferHandler.HasGetTransferHandler">
+      <point x="-35.66666666666663" y="-14.0" />
+      <point x="946.5663392857143" y="302.0" />
+      <point x="776.3924999999998" y="302.0" />
+      <point x="59.66666666666663" y="14.0" />
+    </edge>
+    <edge source="java.awt.Window" target="java.awt.Container">
+      <point x="19.75" y="-14.0" />
+      <point x="489.49999999999994" y="224.0" />
+      <point x="885.4413392857143" y="224.0" />
+      <point x="-23.25" y="14.0" />
+    </edge>
+    <edge source="java.awt.Component" target="java.awt.MenuContainer">
+      <point x="-34.66666666666663" y="-14.0" />
+      <point x="874.0246726190477" y="53.0" />
+      <point x="95.25" y="53.0" />
+      <point x="31.75" y="14.0" />
+    </edge>
+    <edge source="models.SimpleMessage" target="models.Message">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.MessageRecipientCtrl" target="java.lang.Runnable">
+      <point x="41.75" y="-14.0" />
+      <point x="1074.5" y="777.0" />
+      <point x="1283.25" y="777.0" />
+      <point x="-22.75" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JFrame" target="java.awt.Frame">
+      <point x="-29.599999999999994" y="-14.0" />
+      <point x="144.42583333333323" y="400.0" />
+      <point x="49.5" y="400.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JFrame" target="javax.swing.WindowConstants">
+      <point x="29.599999999999994" y="-14.0" />
+      <point x="203.62583333333328" y="400.0" />
+      <point x="326.74999999999994" y="400.0" />
+      <point x="-35.75" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.MessageRecipientCtrl" target="controller.interfaces.RecipientCtrlInterface">
+      <point x="-41.75" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="views.Header" target="views.SimpleView">
+      <point x="-19.5" y="-14.0" />
+      <point x="1125.4412202380954" y="478.0" />
+      <point x="840.0392857142856" y="478.0" />
+      <point x="43.28571428571422" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JDialog" target="javax.swing.WindowConstants">
+      <point x="-14.800000000000011" y="-14.0" />
+      <point x="424.64122023809523" y="380.0" />
+      <point x="398.24999999999994" y="380.0" />
+      <point x="35.75" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.AgentCtrl" target="controller.interfaces.AgentCtrlInterface">
+      <point x="-22.5" y="-14.0" />
+      <point x="1222.202380952381" y="767.0" />
+      <point x="1167.5" y="767.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="controller.implementations.message.MessageWaiting" target="controller.interfaces.MessageState">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="views.RecipientGroup" target="views.SimpleView">
+      <point x="-32.0" y="-14.0" />
+      <point x="790.9412202380953" y="508.0" />
+      <point x="796.7535714285714" y="508.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JFrame" target="javax.swing.TransferHandler.HasGetTransferHandler">
+      <point x="0.0" y="-14.0" />
+      <point x="174.02583333333325" y="380.0" />
+      <point x="106.49999999999994" y="380.0" />
+      <point x="106.49999999999994" y="302.0" />
+      <point x="657.0591666666666" y="302.0" />
+      <point x="-59.66666666666663" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JDialog" target="javax.accessibility.Accessible">
+      <point x="14.800000000000011" y="-14.0" />
+      <point x="454.24122023809525" y="390.0" />
+      <point x="616.7258333333332" y="390.0" />
+      <point x="616.7258333333332" y="214.0" />
+      <point x="507.8163392857143" y="214.0" />
+      <point x="12.25" y="14.0" />
+    </edge>
+    <edge source="java.awt.Container" target="java.awt.Component">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="javax.swing.JComponent" target="java.io.Serializable">
+      <point x="35.66666666666663" y="-14.0" />
+      <point x="1017.8996726190476" y="302.0" />
+      <point x="1068.1913392857143" y="302.0" />
+      <point x="25.5" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6545260156806842" x="1183.8123393316196" y="485.4331619537275" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

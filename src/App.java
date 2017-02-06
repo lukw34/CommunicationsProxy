@@ -1,3 +1,8 @@
+/**
+ * @author Lukasz Walewski (188584)
+ *
+ */
+
 import javax.swing.*;
 
 /**

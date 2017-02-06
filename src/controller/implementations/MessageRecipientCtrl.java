@@ -136,6 +136,7 @@ public class MessageRecipientCtrl implements RecipientCtrlInterface<Recipient>, 
 
             Thread.sleep(Timeout.getTimeout(1000, 2000));//symulacja przetwarzania wiadomosci
             this.setState(this.counting);
+            message.setContent(threadName);
             message.setRecipiant(parentCtrl.getRandomRecipient());
             messageCtrl.setMessage(message);
             messageCtrl.setState(messageCtrl.getWaiting());

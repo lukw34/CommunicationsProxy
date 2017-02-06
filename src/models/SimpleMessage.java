@@ -36,6 +36,16 @@ public class SimpleMessage implements Message {
     }
 
     /**
+     * Metoda ustawiajaca tresc.
+     *
+     * @param content Nowa tresc wiadomosci.
+     */
+    @Override
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    /**
      * Metoda pobierajaca zawartosc wiadomosci.
      *
      * @return Zawartość wiadomości.

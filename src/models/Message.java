@@ -19,6 +19,13 @@ public interface Message {
     void setRecipiant(RecipientCtrlInterface recipiant);
 
     /**
+     * Umozliwia zmiane tresci.
+     *
+     * @param content Nowa tresc.
+     */
+    void setContent(String content);
+
+    /**
      * Udostepnia zawartosc wiadomosci.
      *
      * @return Zawartosc wiadomosci.
