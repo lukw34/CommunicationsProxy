@@ -15,4 +15,11 @@ public interface HeaderCtrlInterface<T extends Component> extends ViewController
      * @param event Obiekt akcji.
      */
     void onAddThread(ActionEvent event);
+
+    /**
+     * Akcja obslugujaca dodanie wiadomosci.
+     *
+     * @param event Obiekt akcji.
+     */
+    void onAddMessage(ActionEvent event);
 }

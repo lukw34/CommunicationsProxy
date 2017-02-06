@@ -6,6 +6,7 @@ import controller.implementations.message.MessageWaiting;
 import controller.interfaces.MessageCtrlInterface;
 import controller.interfaces.MessageState;
 import models.Message;
+import utils.Timeout;
 import views.MessageView;
 import views.SimpleView;
 
@@ -118,7 +119,7 @@ public class MessageCtrl implements MessageCtrlInterface<MessageView> {
     public void sendIfPossible() throws InterruptedException {
         if (actualState.canProcessing() && semaphore.tryAcquire()) {
             this.setState(this.processing);
-            Thread.sleep(750);
+            Thread.sleep(Timeout.getTimeout(250, 500));
             new Thread(() -> {
                 boolean isSucces = message.getRecipient().onReciveMessage(this);
                 if (isSucces) {

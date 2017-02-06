@@ -6,34 +6,34 @@ import utils.AppConfig;
 import java.awt.*;
 
 /**
- * Klasa reprezentujaca gotowosc adresata do odbioru wiadomosci
+ * Klasa reprezentujaca stan w ktorym adresat przetwarza wiadomosc.
  */
-public class BoxReadyState implements RecipientState {
+public class BoxCountingsState implements RecipientState {
+
     /**
-     * Metoda rysujaca widok prezentujacy mozliwosc odebrania wiadmosci.
+     * Metoda rysujaca widok prezentujacy przetwarzanie wiadomosci przez adresata.
      *
-     * @param g Grafika.
+     * @param g          Grafika.
      * @param startPoint Punkt poczatkowy.
      */
     @Override
     public void paint(Graphics g, Point startPoint) {
         int width = AppConfig.MESSAGE_BOX_WIDTH;
         int height = AppConfig.MESSAGE_BOX_HEIGHT;
-        g.setColor(Color.GREEN);
+        g.setColor(Color.blue);
         g.fill3DRect(startPoint.x, startPoint.y, width, height, true);
-
-        g.setColor(Color.black);
+        g.setColor(Color.white);
         g.setFont(new Font("TimesRoman", Font.BOLD, 14));
-        g.drawString("READY!", 10, 25);
+        g.drawString("Counting ...", 10, 25);
     }
 
     /**
      * Informacja o gotowowosci adresata.
      *
-     * @return true, poniewaz adresat moze otrzymac wiadomosc.
+     * @return false, poniewaz adresat jest zajety.
      */
     @Override
     public boolean isReady() {
-        return true;
+        return false;
     }
 }

@@ -49,9 +49,7 @@ public class Header extends JPanel implements SimpleView<Header> {
      * Inicjalizuje elementy widoku.
      */
     private void initElements() {
-        new ButtonsGroup("img/plus.png", BorderLayout.WEST, headerCtrl::onAddThread, null).run();
-        new ButtonsGroup("img/minus.png", BorderLayout.EAST, null, null).run();
-
+        new ButtonsGroup("img/plus.png", BorderLayout.WEST, headerCtrl::onAddThread, headerCtrl::onAddMessage).run();
         loadLogo.run();
         Border raisedbevel = BorderFactory.createRaisedBevelBorder();
         Border loweredbevel = BorderFactory.createLoweredBevelBorder();
@@ -96,6 +94,7 @@ public class Header extends JPanel implements SimpleView<Header> {
                 JButton threadButton = new JButton("Watek", icon);
                 JButton messageButton = new JButton("Wiadomosc", icon);
                 threadButton.addActionListener(this.threadListener);
+                messageButton.addActionListener(this.messageLsitener);
                 buttons.add(threadButton);
                 buttons.add(messageButton);
                 add(buttons, place);

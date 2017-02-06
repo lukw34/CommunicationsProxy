@@ -47,4 +47,12 @@ public class AppHeaderCtrl implements HeaderCtrlInterface<Header> {
     public void onAddThread(ActionEvent event) {
         this.recipientGroupCtrl.addThread();
     }
+
+    /**
+     * Logika zwiazana z kliknieciem przycisku dodajacego wiadomosci.
+     */
+    @Override
+    public void onAddMessage(ActionEvent event) {
+        this.agentCtrl.addMessage();
+    }
 }

@@ -25,4 +25,8 @@ public interface AgentCtrlInterface<T extends JPanel> extends ViewController<T> 
      * Metoda odblokowująca wątek pośrednika.
      */
     void unlock();
+    /**
+     * Dodanie wiadomosci.
+     */
+    void addMessage();
 }

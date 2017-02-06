@@ -20,7 +20,7 @@ public class AgentCtrl implements AgentCtrlInterface<Agent>, Runnable {
     private InitParamsInterface initParams;
 
     private ArrayList<MessageCtrlInterface> messageCtrls;
-    private RecipientGroupCtrlInterface messageBoxesCtrl;
+    private RecipientGroupCtrlInterface recipientGroupCtrl;
 
     private int messagesQuantiy = AppConfig.MAX_NUMBER_OF_MESSAGES;
 
@@ -28,11 +28,11 @@ public class AgentCtrl implements AgentCtrlInterface<Agent>, Runnable {
      * Tworzy klase AgentCtrl
      *
      * @param initParams       Parametry poczatkowe.
-     * @param messageBoxesCtrl Kontroler odpowiadajacy za zarzadzanie adresatami.
+     * @param recipientGroupCtrl Kontroler odpowiadajacy za zarzadzanie adresatami.
      */
-    public AgentCtrl(InitParamsInterface initParams, RecipientGroupCtrlInterface messageBoxesCtrl) {
+    public AgentCtrl(InitParamsInterface initParams, RecipientGroupCtrlInterface recipientGroupCtrl) {
         this.initParams = initParams;
-        this.messageBoxesCtrl = messageBoxesCtrl;
+        this.recipientGroupCtrl = recipientGroupCtrl;
         this.agentView = new Agent(this);
         this.messageCtrls = new ArrayList<>();
 
@@ -73,7 +73,7 @@ public class AgentCtrl implements AgentCtrlInterface<Agent>, Runnable {
             MessageCtrlInterface message = messageCtrls.get(index);
             if (index < initParams.getMessageQuantity()) {
                 message.setState(message.getWaiting());
-                RecipientCtrlInterface recipient = messageBoxesCtrl.getRandomRecipient();
+                RecipientCtrlInterface recipient = recipientGroupCtrl.getRandomRecipient();
                 message.setMessage(new SimpleMessage(recipient, "Message" + index));
             } else {
                 message.setState(message.getEmpty());
@@ -111,6 +111,23 @@ public class AgentCtrl implements AgentCtrlInterface<Agent>, Runnable {
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Logika zwiazana z zwiekszeniem ilosci wiadomosci o 1.
+     */
+    @Override
+    public void addMessage() {
+        int numberOfMessages = initParams.getMessageQuantity();
+        System.out.println(numberOfMessages);
+        if(numberOfMessages < AppConfig.MAX_NUMBER_OF_MESSAGES) {
+            numberOfMessages ++;
+            MessageCtrlInterface setToActive = this.messageCtrls.get(numberOfMessages);
+            RecipientCtrlInterface recipient = recipientGroupCtrl.getRandomRecipient();
+            setToActive.setMessage(new SimpleMessage(recipient, "Message" + numberOfMessages));
+            setToActive.setState(setToActive.getWaiting());
+            initParams.setMessageQuantity(numberOfMessages);
         }
     }
 }

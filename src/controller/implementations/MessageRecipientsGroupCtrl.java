@@ -89,8 +89,8 @@ public class MessageRecipientsGroupCtrl implements RecipientGroupCtrlInterface<R
     @Override
     public void addThread() {
         int numberOfThreads = initParams.getNumberOfThreaads();
-        RecipientCtrlInterface setToActive = this.recipientCtrls.get(numberOfThreads);
-        if(setToActive != null) {
+        if(numberOfThreads < AppConfig.MAX_NUMBER_OF_THREADS) {
+            RecipientCtrlInterface setToActive = this.recipientCtrls.get(numberOfThreads);
             setToActive.setState(setToActive.getReady());
             initParams.setNumberOfThreaads(numberOfThreads + 1);
         }

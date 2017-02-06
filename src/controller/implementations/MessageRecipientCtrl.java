@@ -1,13 +1,15 @@
 package controller.implementations;
 
-import controller.implementations.box.BoxEmptyState;
 import controller.implementations.box.BoxProcessingState;
+import controller.implementations.box.BoxEmptyState;
+import controller.implementations.box.BoxCountingsState;
 import controller.implementations.box.BoxReadyState;
-import controller.interfaces.RecipientCtrlInterface;
-import controller.interfaces.RecipientState;
-import controller.interfaces.RecipientGroupCtrlInterface;
 import controller.interfaces.MessageCtrlInterface;
+import controller.interfaces.RecipientCtrlInterface;
+import controller.interfaces.RecipientGroupCtrlInterface;
+import controller.interfaces.RecipientState;
 import models.Message;
+import utils.Timeout;
 import views.Recipient;
 import views.SimpleView;
 
@@ -23,6 +25,7 @@ public class MessageRecipientCtrl implements RecipientCtrlInterface<Recipient>, 
     private RecipientState ready;
     private RecipientState empty;
     private RecipientState processing;
+    private RecipientState counting;
 
     private RecipientState actualState;
 
@@ -40,6 +43,7 @@ public class MessageRecipientCtrl implements RecipientCtrlInterface<Recipient>, 
         this.boxView = new Recipient(this);
         this.ready = new BoxReadyState();
         this.empty = new BoxEmptyState();
+        this.counting = new BoxCountingsState();
         this.processing = new BoxProcessingState();
         this.actualState = this.empty;
     }
@@ -129,11 +133,15 @@ public class MessageRecipientCtrl implements RecipientCtrlInterface<Recipient>, 
         try {
             Message message = messageCtrl.getMessage();
             System.out.println(this.threadName + " otrzymal wiadomość: \"" + message.getContent() + "\"");
-            Thread.sleep(3000);
+
+            Thread.sleep(Timeout.getTimeout(1000, 2000));//symulacja przetwarzania wiadomosci
+            this.setState(this.counting);
             message.setRecipiant(parentCtrl.getRandomRecipient());
-            this.setState(this.ready);
             messageCtrl.setMessage(message);
             messageCtrl.setState(messageCtrl.getWaiting());
+
+            Thread.sleep(Timeout.getTimeout(1000, 3000));//symulacja obliczen
+            this.setState(this.ready);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
